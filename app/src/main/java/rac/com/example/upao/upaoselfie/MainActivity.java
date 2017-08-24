@@ -8,13 +8,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import rac.com.example.upao.upaoselfie.model.Alumno;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Alumno alumno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -26,6 +34,17 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    public void enviarDatos(View view){
+
+        alumno = new Alumno();
+        EditText editNombre=(EditText)findViewById(R.id.nombre);
+        String nombre=editNombre.getText().toString();
+
+        alumno.setNombre(nombre);
+
+        Toast.makeText(getBaseContext(),"Hola "+alumno.getNombre(), Toast.LENGTH_LONG).show();
     }
 
     @Override
